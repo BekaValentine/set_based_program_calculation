@@ -72,6 +72,16 @@ reverse = foldr c n
 This is obviously inefficient, but that's a problem for optimization techniques,
 not for definition techniques.
 
+Personally, I prefer to actually jump right past the foldr combinator and just
+use its UMP on the defined function directly to say that `reverse` is a foldr
+if and only if `reverse [] == n` and `reverse (x:xs) == c x (reverse xs)`, for
+some choice of `n` and `c`, which of course gives us the definition
+
+```haskell
+reverse [] = []
+reverse (x:xs) = reverse xs ++ [x]
+```
+
 
 ## Reasoning to find inverses via sets
 
