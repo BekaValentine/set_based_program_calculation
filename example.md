@@ -121,7 +121,7 @@ genSize n == { t :: Tree | size t == n }
 ```
 
 Now, how can we proceed? By clever use of guessing, let's suppose that
-`genSize` is in fact computable via case analysis on `n`. So the first casemust
+`genSize` is in fact computable via case analysis on `n`. So the first case must
 therefore be
 
 ```haskell
@@ -200,7 +200,7 @@ then we have code that's straightforwardly recursive:
 ```haskell
 genSize 0 = [ Leaf ]
 genSize (Suc n) = [ Branch l r |
-                    (m,p) <- splits,
+                    (m,p) <- splits n,
                     l <- genSize m,
                     r <- genSize p ]
 ```
